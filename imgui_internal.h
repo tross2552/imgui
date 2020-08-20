@@ -1523,9 +1523,9 @@ struct ImGuiContext
     bool                    TabFocusPressed;                    // Set in NewFrame() when user pressed Tab
 
     // Range-Select/Multi-Select
-    bool                    MultiSelectEnabled;
+    ImGuiWindow*            MultiSelectEnabledWindow;           // FIXME-MULTISELECT: We currently don't support recursing/stacking multi-select
     ImGuiMultiSelectFlags   MultiSelectFlags;
-    ImGuiMultiSelectState   MultiSelectState;                   // We currently don't support recursing/stacking multi-select
+    ImGuiMultiSelectState   MultiSelectState;
     ImGuiKeyModFlags        MultiSelectKeyMods;
 
     // Render
@@ -1718,7 +1718,7 @@ struct ImGuiContext
         TabFocusRequestNextCounterRegular = TabFocusRequestNextCounterTabStop = INT_MAX;
         TabFocusPressed = false;
 
-        MultiSelectEnabled = false;
+        MultiSelectEnabledWindow = NULL;
         MultiSelectFlags = ImGuiMultiSelectFlags_None;
         MultiSelectKeyMods = ImGuiKeyModFlags_None;
 
