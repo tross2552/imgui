@@ -2,6 +2,7 @@ project "ImGui"
 	kind "StaticLib"
 	language "C++"
 	staticruntime "on"
+    systemversion "latest"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -15,14 +16,6 @@ project "ImGui"
 		"imgui_widgets.cpp",
 		"backends/imgui_impl_glfw.cpp"
 	}
-
-	filter "system:linux"
-		pic "On"
-
-		systemversion "latest"
-
-	filter "system:windows"
-		systemversion "latest"
 
 	filter "configurations:Debug"
 		runtime "Debug"
